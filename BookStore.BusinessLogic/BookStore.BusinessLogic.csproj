@@ -19,7 +19,6 @@
     <Folder Include="Books\" />
     <Folder Include="Comments\" />
     <Folder Include="Orders\" />
-    <Folder Include="Tags\Comments\" />
     <Folder Include="Tags\Queries\" />
   </ItemGroup>
 

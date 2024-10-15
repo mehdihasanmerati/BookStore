@@ -1,12 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BookStore.Model.Frameworks;
+using BookStore.Model.Tags.Entities;
+using MediatR;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Model.Tags.Commands
 {
-    // کلاس DTO  که حاوی اطلاعاتی است که می توانیم انتیتی خودمان را ثبت کنیم
-    // یعنی حاوی اطلاعات یوزر است که بتوانیم آن را ثبت کنیم مثل update , delete, add  و در کل CQRS
-    // آبجکت کامند در مدل قرار می گیرد و هندلر کامند در بیزینس لاجیک قرار می گیرد
-    public class CreateTag
+    public class CreateTag: IRequest<ApplicationServiceResponse<Tag>>
     {
+        // validation
         [Required]
         [StringLength(50, MinimumLength = 2)]
         public string TagName { get; set; }
