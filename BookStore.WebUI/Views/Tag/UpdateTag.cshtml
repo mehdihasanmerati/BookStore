@@ -1,0 +1,19 @@
+﻿@model UpdateTagViewModel
+
+@{
+    ViewData["Title"] = "Update Tag";
+}
+
+<h2>Update Tag</h2>
+
+<form asp-action="UpdateTag" method="post">
+    <div class="form-group">
+        <label asp-for="TagName"></label>
+        <input asp-for="TagName" type="text" class="form-control" />
+        <span asp-validation-for="TagName"></span>
+    </div>
+
+    <input type="hidden" asp-for="TagId" />
+    <button type="submit" class="btn btn-primary">Update Tag</button>
+</form>
+

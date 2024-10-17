@@ -11,6 +11,7 @@
         <label asp-for="TagName"></label>
         <input asp-for="TagName" type="text" class="form-control mt-2" id="TagName"
          name="TagName" value="@Model.TagName" required />
+         <span asp-validation-for="TagName"></span>
     </div>
     <input type="submit" class="btn btn-primary mt-3" value="Create" />
 </form>
