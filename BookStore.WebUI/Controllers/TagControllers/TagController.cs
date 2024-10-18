@@ -103,5 +103,22 @@ namespace BookStore.WebUI.Controllers.TagControllers
             }
             return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteTag(int id)
+        {
+            var command = new DeleteTag { TagId = id };
+            var result = await _mediator.Send(command);
+
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("IndexTag");
+            }
+
+            ModelState.AddModelError("", string.Join(", ", result.Errors));
+
+            return RedirectToAction("IndexTag");
+        }
     }
 }

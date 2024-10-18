@@ -17,6 +17,12 @@
                 <td>@tag.TagName</td>
                 <td>
                     <a asp-controller="Tag" asp-action="UpdateTag" asp-route-id="@tag.Id" class="btn btn-warning">Edit</a>
+
+                    <form asp-controller="Tag" asp-action="DeleteTag" asp-route-id="@tag.Id" method="post" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+
                 </td>
             </tr>
         }
