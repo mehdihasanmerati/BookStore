@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Authors\" />
-    <Folder Include="Books\" />
     <Folder Include="Comments\" />
     <Folder Include="Orders\" />
   </ItemGroup>

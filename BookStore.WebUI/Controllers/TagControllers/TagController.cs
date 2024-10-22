@@ -105,7 +105,7 @@ namespace BookStore.WebUI.Controllers.TagControllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] 
         public async Task<IActionResult> DeleteTag(int id)
         {
             var command = new DeleteTag { TagId = id };

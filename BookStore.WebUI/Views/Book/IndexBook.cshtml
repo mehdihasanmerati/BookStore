@@ -1,0 +1,26 @@
+﻿@model List<BookStore.Model.Books.DTO.GetBookDto>
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Description</th>
+            <th>PublishDate</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Description</td>
+                <td>@item.PublishDate</td>
+                <td>@item.Name</td>
+                <td>@item.Author</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+    </tbody>
+    
+</table>

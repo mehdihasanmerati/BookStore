@@ -14,6 +14,7 @@
          <span asp-validation-for="TagName"></span>
     </div>
     <input type="submit" class="btn btn-primary mt-3" value="Create" />
+    <a asp-controller="Tag" asp-action="IndexTag" type="submit" class="btn btn-secondary mt-3 mx-2"> Return to TagList</a>
 </form>
 
 @if(Model.Errors.Count > 0)

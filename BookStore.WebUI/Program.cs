@@ -1,4 +1,5 @@
-using BookStore.BusinessLogic.Tags.Comments;
+using BookStore.BusinessLogic.Books.Commands;
+using BookStore.BusinessLogic.Tags.Commands;
 using BookStore.DAL.DbContexts;
 using BookStore.DAL.Frameworks;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ builder.Services.AddDbContext<BookDbContext>(options => options.UseSqlServer
 (builder.Configuration.GetConnectionString("book")).AddInterceptors(new AddAuditInterceptor()));
 
 builder.Services.AddMediatR(x => x.RegisterServicesFromAssembly(typeof(CreateTagHandler).Assembly));
+builder.Services.AddMediatR(x => x.RegisterServicesFromAssembly(typeof(CreateBookHandler).Assembly));
 
 var app = builder.Build();
 

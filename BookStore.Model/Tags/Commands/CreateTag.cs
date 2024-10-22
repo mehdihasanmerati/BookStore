@@ -7,7 +7,6 @@ namespace BookStore.Model.Tags.Commands
 {
     public class CreateTag: IRequest<ApplicationServiceResponse<Tag>>
     {
-        // validation
         [Required]
         [StringLength(50, MinimumLength = 2)]
         public string TagName { get; set; }

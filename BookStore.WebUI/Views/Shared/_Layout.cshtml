@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BookStore.WebUI.styles.css" asp-append-version="true" />
+
+    @await RenderSectionAsync("Head", required: false)
+
 </head>
 <body>
     <header>
@@ -26,10 +29,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tag" asp-action="CreateTag">CreateTag</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Tag" asp-action="CreateTag">Tag</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tag" asp-action="UpdateTag">UpdateTag</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="CreateBook">Book</a>
                         </li>
                     </ul>
                 </div>
@@ -50,6 +53,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
