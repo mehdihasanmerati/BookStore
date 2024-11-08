@@ -1,0 +1,82 @@
+﻿@model UpdateBookViewModel
+
+<h2 class="text-center">Update Book</h2>
+
+<form asp-action="UpdateBook" method="post" enctype="multipart/form-data" class="p-4 rounded shadow-sm" 
+                 style="max-width: 600px; margin: 0 auto; background-color: #f9f9f9;">
+    <span asp-validation-summary="All" class="text-danger"></span>
+
+    <div class="form-group mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" class="form-control rounded-pill" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Author" class="form-label">Author</label>
+        <input asp-for="Author" class="form-control rounded-pill" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <textarea asp-for="Description" class="form-control rounded" rows="4"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="PublishDate" class="form-label">Publish Date</label>
+        <input asp-for="PublishDate" class="form-control rounded-pill" type="date" />
+        <span asp-validation-for="PublishDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Price" class="form-label">Price</label>
+        <input asp-for="Price" class="form-control rounded-pill" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <!-- Display the current image -->
+    @if (!string.IsNullOrEmpty(Model.CurrentImageUrl))
+    {
+        <div class="form-group mt-4">
+            <label>Current Image:</label>
+            <div class="mt-2">
+                <img src="@Model.CurrentImageUrl" alt="Book Image"
+                style="max-width: 150px; border-radius: 10px; box-shadow: 0px 2px 8px rgba(0,0,0,0.1);" />
+            </div>
+        </div>
+    }
+
+    <!-- Upload new image -->
+    <div class="form-group mt-4 mb-3">
+        <label asp-for="ImageFile" class="form-label">Upload New Image:</label>
+        <input asp-for="ImageFile" class="form-control form-control-file rounded" type="file" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+    </div>
+
+    <!-- Selected tags -->
+    <div class="form-group mt-4 mb-3">
+        <label>Select Tags:</label>
+        <div class="d-flex flex-wrap">
+            @foreach (var tag in Model.TagsForDisplay)
+            {
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" name="SelectedTags" value="@tag.Id"
+                    @(Model.SelectedTags.Contains(tag.Id) ? "checked" : "") />
+                    <label class="form-check-label">@tag.TagName</label>
+                </div>
+            }
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-primary rounded-pill w-100 mt-3" value="Update" />
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

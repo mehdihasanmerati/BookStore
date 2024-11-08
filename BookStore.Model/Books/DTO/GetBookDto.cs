@@ -1,4 +1,6 @@
-﻿namespace BookStore.Model.Books.DTO
+﻿using Microsoft.AspNetCore.Http;
+
+namespace BookStore.Model.Books.DTO
 {
     public class GetBookDto
     {
@@ -9,5 +11,6 @@
         public DateTime PublishDate { get; set; }
         public decimal Price { get; set; }
         public string ImageUrl { get; set; }
+        public List<int> SelectedTags {  get; set; } = new List<int>();
     }
 }

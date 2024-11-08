@@ -1,0 +1,21 @@
+﻿@model CreateAuthorViewModel
+
+<h2 class="form-title">Create Author</h2>
+
+<form asp-action="CreateAuthor" method="post" class="p-4 border rounded shadow-sm bg-light">
+    <div class="form-group mb-3">
+        <label asp-for="FirstName" class="form-label fw-bold"></label>
+        <input asp-for="FirstName" type="text" class="form-control shadow-sm" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="LastName" class="form-label fw-bold"></label>
+        <input asp-for="LastName" type="text" class="form-control shadow-sm" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary shadow">Save</button>
+    <a asp-controller="Author" asp-action="IndexAuthor" class="btn-secondary shadow-sm">Return to AuthorList</a>
+</form>
+
+
+

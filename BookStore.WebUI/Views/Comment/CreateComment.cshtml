@@ -1,0 +1,45 @@
+﻿@model CreateCommentViewModel
+
+<h2 class="form-title">Create Comment</h2>
+
+<form asp-controller="Comment" asp-action="CreateComment" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group mb-3">
+        <label asp-for="BookId" class="form-label">Select Book</label>
+        <select asp-for="BookId" class="form-control shadow-sm" asp-items="Model.BookList"></select>
+        <span asp-validation-for="BookId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="BookComment" class="form-label"></label>
+        <input asp-for="BookComment" type="text" class="form-control shadow-sm" />
+        <span asp-validation-for="BookComment" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="CommentBy" class="form-label"></label>
+        <input asp-for="CommentBy" type="text" class="form-control shadow-sm" />
+        <span asp-validation-for="CommentBy" class="text-danger"></span>
+    </div>
+
+    <div class="form-group form-check mb-3">
+        <input asp-for="IsValid" type="checkbox" class="form-check-input" />
+        <label asp-for="IsValid" class="form-check-label ms-2"></label>
+        <span asp-validation-for="IsValid" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="CommentDate" class="form-label"></label>
+        <input asp-for="CommentDate" type="date" class="form-control shadow-sm" />
+        <span asp-validation-for="CommentDate" class="text-danger"></span>
+    </div>
+
+    <input type="submit" class="btn btn-primary shadow" value="Save"/>
+    <a asp-controller="Comment" asp-action="IndexComment" class="btn-secondary shadow-sm">Return to CommentList</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

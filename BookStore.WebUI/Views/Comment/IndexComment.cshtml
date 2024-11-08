@@ -1,0 +1,35 @@
+﻿@model List<GetCommentDto>
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Commnet</th>
+            <th>CommentBy</th>
+            <th>Is Valid</th>
+            <th>Comment Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookComment</td>
+                <td>@item.CommentBy</td>
+                <td>@item.IsValid.ToString()</td>
+                <td>@item.CommentDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-controller="Comment" asp-action="UpdateComment" asp-route-id="@item.Id"
+                       asp-route-BookId="@item.BookId" class="btn btn-warning">Edit</a>
+
+                    <form asp-controller="Comment" asp-action="DeleteComment" asp-route-id="@item.Id" 
+                          method="post" style="display:inline">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

@@ -15,6 +15,7 @@ namespace BookStore.Model.Books.Commands
         [StringLength(50, MinimumLength = 2)]
         public string Author { get; set; }
 
+        [Required]
         [StringLength(500)]
         public string Description { get; set; }
 

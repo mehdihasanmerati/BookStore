@@ -1,4 +1,4 @@
-﻿@model List<BookStore.Model.Books.DTO.GetBookDto>
+﻿@model List<GetBookDto>
 
 <table class="table table-bordered table-hover table-striped">
     <thead>
@@ -6,21 +6,30 @@
             <th>Name</th>
             <th>Author</th>
             <th>Description</th>
-            <th>PublishDate</th>
+            <th>Publish Date</th>
             <th>Price</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Description</td>
-                <td>@item.PublishDate</td>
                 <td>@item.Name</td>
                 <td>@item.Author</td>
-                <td>@item.Price</td>
+                <td>@item.Description</td>
+                <td>@item.PublishDate.ToString("dd MMM yyyy")</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>
+                    <a asp-controller="Book" asp-action="UpdateBook" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+
+                    <form asp-controller="Book" asp-action="DeleteBook" asp-route-id="@item.Id" method="post" style="display:inline">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
-    
 </table>
+

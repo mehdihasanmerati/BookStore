@@ -11,7 +11,7 @@ namespace BookStore.Model.Comments.Entities
     public class Comment : BaseEntity
     {
         public int BookId { get; set; }
-        public Book Book { get; set; }
+        public Book? Book { get; set; }
         public string BookComment { get; set; }
         public string CommentBy { get; set; }
         public bool IsValid { get; set; }

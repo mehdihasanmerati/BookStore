@@ -1,0 +1,32 @@
+﻿@model List<GetOrderDto>
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>CustomerEmail</th>
+            <th>OrderDate</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CustomerEmail</td>
+                <td>@item.OrderDate.ToString("yyyy-MM-dd")</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>
+                    <a asp-controller="Order" asp-action="UpdateOrder" asp-route-id="@item.Id"
+                       asp-route-BookId="@item.BookId" class="btn btn-warning">Edit</a>
+
+                    <form asp-controller="Order" asp-action="DeleteOrder" asp-route-id="@item.Id"
+                          method="post" style="display:inline">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

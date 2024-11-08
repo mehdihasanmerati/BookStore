@@ -1,0 +1,46 @@
+﻿@model UpdateCommentViewModel
+
+<h2 class="text-center mb-4">Update Comment</h2>
+
+<form asp-controller="Comment" asp-action="UpdateComment" method="post" class="p-4 rounded shadow-sm" 
+style="max-width: 500px; margin: 0 auto; background-color: #f9f9f9;">
+    <input type="hidden" asp-for="BookId" /> 
+
+    <div class="form-group mb-3">
+        <label asp-for="BookComment" class="form-label">Book Comment</label>
+        <input asp-for="BookComment" type="text" class="form-control rounded-pill" />
+        <span asp-validation-for="BookComment" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="CommentBy" class="form-label">Comment By</label>
+        <input asp-for="CommentBy" type="text" class="form-control rounded-pill" />
+        <span asp-validation-for="CommentBy" class="text-danger"></span>
+    </div>
+
+    <div class="form-group form-check mb-3">
+        <input asp-for="IsValid" type="checkbox" class="form-check-input" id="IsValidCheck" />
+        <label asp-for="IsValid" class="form-check-label" for="IsValidCheck">Is Valid</label>
+        <span asp-validation-for="IsValid" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="CommentDate" class="form-label">Comment Date</label>
+        <input asp-for="CommentDate" type="date" class="form-control rounded-pill" />
+        <span asp-validation-for="CommentDate" class="text-danger"></span>
+    </div>
+
+    <input type="submit" class="btn btn-primary w-100 rounded-pill mt-3" value="Update"/>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+
+
+

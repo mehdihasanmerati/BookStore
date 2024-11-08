@@ -13,7 +13,7 @@ namespace BookStore.BusinessLogic.Tags.Comments
 
         protected override async Task HandleRequest(UpdateTag request, CancellationToken cancellationToken)
         {
-            Tag tag =  _context.Tags.SingleOrDefault(x => x.Id == request.Id);
+            var tag =  _context.Tags.FirstOrDefault(x => x.Id == request.Id);
             if (tag == null)
             {
                 AddError($"The tag with ID {request.Id} was not recognized");

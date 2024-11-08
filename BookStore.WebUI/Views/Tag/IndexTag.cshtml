@@ -1,4 +1,5 @@
 ﻿@model List<BookStore.Model.Tags.DTO.GetTagDto>
+
 <h2>Tags List</h2>
 
 <table class="table table-hover table-bordered table-striped">
@@ -6,6 +7,7 @@
         <tr>
             <th>Id</th>
             <th>Tag Name</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -15,13 +17,11 @@
                 <td>@tag.Id</td>
                 <td>@tag.TagName</td>
                 <td>
-                    <a asp-controller="Tag" asp-action="UpdateTag" asp-route-id="@tag.Id" class="btn btn-warning">Edit</a>
-
+                    <a asp-controller="Tag" asp-action="UpdateTag" asp-route-id="@tag.Id" class="btn btn-warning btn-sm">Edit</a>
                     <form asp-controller="Tag" asp-action="DeleteTag" asp-route-id="@tag.Id" method="post" style="display:inline;">
                         @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
-
                 </td>
             </tr>
         }

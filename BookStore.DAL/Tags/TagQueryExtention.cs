@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.DAL.Tags
 {
+   
     public static class TagQueryExtention
     {
         public static IQueryable<Tag> WhereOver(this IQueryable<Tag> tags, string tagName)

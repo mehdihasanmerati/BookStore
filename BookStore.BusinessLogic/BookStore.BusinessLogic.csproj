@@ -14,10 +14,4 @@
     <ProjectReference Include="..\BookStore.DAL\BookStore.DAL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Authors\" />
-    <Folder Include="Comments\" />
-    <Folder Include="Orders\" />
-  </ItemGroup>
-
 </Project>

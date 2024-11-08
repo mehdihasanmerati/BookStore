@@ -1,13 +1,10 @@
-﻿using BookStore.BusinessLogic.Tags.Comments;
-using BookStore.Model.Tags.Commands;
+﻿using BookStore.Model.Tags.Commands;
 using BookStore.Model.Tags.DTO;
-using BookStore.Model.Tags.Entities;
 using BookStore.Model.Tags.Queries;
 using BookStore.WebUI.Frameworks;
 using BookStore.WebUI.Models.Tags;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace BookStore.WebUI.Controllers.TagControllers
 {
@@ -41,6 +38,7 @@ namespace BookStore.WebUI.Controllers.TagControllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateTag(CreateTagViewModel model)
         {
             if (ModelState.IsValid)
@@ -56,7 +54,7 @@ namespace BookStore.WebUI.Controllers.TagControllers
                     return RedirectToAction("IndexTag");
                 }
 
-                model.Errors.AddRange(result.Errors);
+                ModelState.AddModelError("", string.Join(", ", result.Errors));
             }
 
             return View(model); 
@@ -65,23 +63,25 @@ namespace BookStore.WebUI.Controllers.TagControllers
         [HttpGet]
         public async Task<IActionResult> UpdateTag(int id)
         {
-           var query = new GetTagByIdQuery { Id = id };
-           var result = await _mediator.Send(query);
+           var tagResponse = await _mediator.Send(new GetTagByIdQuery { Id = id });
 
-            if (result == null)
+            if (tagResponse.IsSuccess)
             {
-                return NotFound();
+                var result = tagResponse.Result;
+
+                var model = new UpdateTagViewModel
+                {
+                    TagId = result.Id,
+                    TagName = result.TagName,
+                };
+                return View(model);
             }
-
-            var model = new UpdateTagViewModel
-            {
-                TagId = result.Id,
-                TagName = result.TagName,
-            };
-            return View(model);
+            return NotFound();
+          
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateTag(UpdateTagViewModel model)
         {
             if (ModelState.IsValid)

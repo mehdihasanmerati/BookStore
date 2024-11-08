@@ -16,16 +16,3 @@
     <input type="submit" class="btn btn-primary mt-3" value="Create" />
     <a asp-controller="Tag" asp-action="IndexTag" type="submit" class="btn btn-secondary mt-3 mx-2"> Return to TagList</a>
 </form>
-
-@if(Model.Errors.Count > 0)
-{
-    <div class="alert alert-danger">
-        <ul>
-            @foreach (var error in Model.Errors)
-            {
-                <li>@error</li>
-            }
-        </ul>
-    </div>
-
-}
