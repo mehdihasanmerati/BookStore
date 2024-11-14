@@ -1,0 +1,55 @@
+﻿@page
+@model AAASecurity.Pages.Users.ListModel
+@{
+}
+
+<h2>Users List</h2>
+
+<table class="table table-bordered table-hover table-striped shadow text-center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Users.Count() < 1)
+        {
+            <tr>
+                <td colspan="3">
+                    There is no uder in database
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@user.Id" class="btn btn-warning">Edit</a>
+                        <a asp-page="ManagementRole" asp-route-id="@user.Id" class="btn btn-success">ManagementRole</a>
+                        <form method="post" style="display:inline">
+                            <input type="hidden" name="id" value="@user.Id" />
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-success" asp-page="Create"> Create User </a>
+<a asp-controller="Role" asp-action="Create" class="btn btn-info"> Create Role </a>
+<a class="btn btn-warning" asp-page="/Account/UserInfo" > User Information </a>
+<a class="btn btn-secondary" asp-page="Logout"> Logout </a>
+
+
+

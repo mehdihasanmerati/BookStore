@@ -1,0 +1,15 @@
+﻿@model AAASecurity.Models.UpdateRoleViewModel
+
+<h2>Update Role</h2>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input asp-for="Id" type="hidden" />
+
+    <div class="form-group mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" type="text" class="form-control shadow-sm" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <button type="submit" class="btn btn-primary"> Update </button>
+    <a asp-action="List" class="btn btn-secondary"> Return to List </a>
+</form>

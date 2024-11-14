@@ -1,25 +1,26 @@
 ﻿html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
 .form-title {
     font-size: 24px;
     font-weight: bold;
@@ -118,3 +119,48 @@ body {
     vertical-align: middle;
 }
 
+.navbar {
+    background-color: #007bff; /* رنگ آبی */
+}
+
+.navbar-nav .nav-link {
+    color: white !important; /* رنگ سفید برای لینک‌ها */
+}
+
+    .navbar-nav .nav-link:hover {
+        color: #ffc107 !important; /* تغییر رنگ هنگام هاور */
+    }
+
+.navbar-nav .nav-item:hover {
+    background-color: rgba(0, 123, 255, 0.2); /* افکت هاور با رنگ زمینه ملایم */
+    border-radius: 4px;
+}
+
+.navbar {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+.container {
+    background-color: #f8f9fa; /* رنگ زمینه روشن */
+}
+
+footer {
+    background-color: #343a40; /* رنگ تیره برای پاورقی */
+    color: #fff;
+}
+.navbar, .footer {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
